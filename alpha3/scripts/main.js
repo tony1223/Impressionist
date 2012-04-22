@@ -1252,27 +1252,29 @@ function reAdjustChildCoords()
 			if(objectmap[i].index != "" || !isNaN(objectmap[i].index))
 			{
 				var stubobject = $("#____object____"+objectmap[i].index);
-				var l = parseInt(stubobject.css("left").split("px")[0]);
-				var t = parseInt(stubobject.css("top").split("px")[0]);
-				//adjust skew y
-				var skewy = stubobject.attr("data-skewy")
-				var skewx = stubobject.attr("data-skewx")
+				if(stubobject.length){ //if stub object exist
+					var l = parseInt(stubobject.css("left").split("px")[0]);
+					var t = parseInt(stubobject.css("top").split("px")[0]);
+					//adjust skew y
+					var skewy = stubobject.attr("data-skewy")
+					var skewx = stubobject.attr("data-skewx")
 
 
-				l = l - 600;
-				t = t - 300;
-				if(skewy != undefined)
-				{
-					t = t - 60;
-				} 
-				if(skewx != undefined)
-				{
-					t = t + 40; 
+					l = l - 600;
+					t = t - 300;
+					if(skewy != undefined)
+					{
+						t = t - 60;
+					} 
+					if(skewx != undefined)
+					{
+						t = t + 40; 
+					}
+					
+					stubobject.css("position", "absolute");
+					stubobject.css("left", l)
+					stubobject.css("top", t)
 				}
-				
-				stubobject.css("position", "absolute");
-				stubobject.css("left", l)
-				stubobject.css("top", t)
 			}
 			
 		
